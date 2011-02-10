@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20110210005350) do
 
   create_table "user_stories", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "stroy_id"
+    t.integer  "story_id"
     t.boolean  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
