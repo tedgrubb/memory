@@ -1,4 +1,11 @@
 Memory::Application.routes.draw do
+
+  match "/sessions/new" => "sessions#new"
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout  
+
+  root :to => "sessions#new"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
