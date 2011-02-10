@@ -14,56 +14,158 @@
   background-image = "-moz-linear-gradient(top, #{!top}, #{!bottom})"
   background-image = "-webkit-gradient(linear,left top,left bottom,color-stop(0, #{!top}),color-stop(1, #{!bottom}))"
   -ms-filter = "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!top}', EndColorStr='#{!bottom}')"
+=box_shadow(!px, !hex)
+  :box-shadow = !px !hex
+  :-moz-box-shadow = !px !hex
+  :-webkit-box-shadow = !px !hex
 
+
+body
+  :background #FFF
+  :font-family "Helvetica Neue"
+  :font-size 13px
+  :margin 0
 
 *
   :margin 0
   :padding 0
+  :outline 0
+  
+h1, h2, h3, h4, h5
+  :margin-bottom 20px
+
+a
+  :text-decoration none
+  :color #0c91c8
+  &:hover
+    :text-decoration underline
+p
+  :margin-bottom 20px
 
 ul
   :list-style none
   li
     :margin-bottom 10px
-body
-  :background #FFF
-  :font-family "Lucida Grande"
-  :font-size 13px
-  :margin 0
-
-h1, h2, h3, h4, h5
-  :margin-bottom 20px
 
 #header
   +clearfix
-  :width 940px
-  :padding 10px
-  :margin 0 auto 10px
+  :width 700px
+  :padding 20px 40px
+  :margin 0 auto 40px
   :background #EEE
   +rounded(0 0 10px 10px)
   h1
+    :font-size 34px
     :margin 0
     :float left
+    a
+      :color #000
+      span
+        :color #0c91c8
   .user_nav
+    :padding-top 15px
     :float right
 
-#content, #footer
+#content, #footer .inset
   :margin 0 auto
-  :width 940px
-  :padding 10px
+  :width 700px
   
 form
   label
     :display block
   .text
     input
+      :font-family inherit
       :padding 2px
       :font-size 14px
   .submit
     input
-      :font-size 14px
+      :font-weight bold
+      :font-family inherit
+      :color #FFF
+      +box_shadow(inset 0 0 2px, #FFF)
+      :text-shadow 1px 1px 2px #666
+      :font-size 18px
       :cursor pointer
       :background #cae111
-      +box_gradient(#cae111, #b1c40b)
-      :border 1px solid #737f0c
+      +box_gradient(#3cb3e4, #0c91c8)
+      :border 1px solid #025d83
       :padding 10px 20px
       +rounded(5px)
+      &:hover
+        +box_shadow(inset 0 0 10px, #0c91c8)
+      
+#intro
+  .top
+    :font-weight 200
+    :font-size 25px
+  .bottom
+    :font-size 18px
+    
+#new-story
+  h2
+    :margin-bottom 5px
+  .submit
+    :float right
+  #inputs
+    :padding 5px 20px
+    :margin-bottom 20px
+    +rounded(10px)
+    :border 1px solid #CCC
+    +box_shadow(inset 1px 1px 2px, #DDD)
+    .text
+      :padding-top 8px
+      :border-top 1px dotted #CCC
+      :position relative
+      &.first
+        :border none
+      &.focused
+        label
+          :display none
+      label
+        :width 100%
+        :cursor text
+        :padding 5px
+        :font-size 30px
+        :color #CCC
+        :position absolute
+        strong
+          :color #000
+      input
+        :width 100%
+        :font-size 30px
+        :border 0
+        :width 580p
+
+#story
+  #story-content
+    :float left
+    :width 480px
+    .timestamp
+      :color #777
+  #story-info
+    :float right
+    :width 200px
+    .pod
+      +clearfix
+      :margin-bottom 20px
+      .avatar
+        :width 32px
+        :height 32px
+        :border 1px solid #DDD
+        :background-color #EEE
+        :margin-right 5px
+        :margin-bottom 5px
+        :float left
+        &.large
+          :width 200px
+          :height 200px
+                
+#footer
+  :position absolute
+  :bottom 0
+  :width 100%
+  .inset
+    :padding-top 10px
+    :border-top 1px dotted #CCC
+        

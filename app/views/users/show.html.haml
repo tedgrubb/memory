@@ -1,0 +1,10 @@
+#story
+  #story-info
+    %h2= @user.name
+    .pod
+      .avatar.large
+  #story-content
+    %h1
+      Timeline
+    %ul
+      = render :partial => "/stories/story", :collection => @stories

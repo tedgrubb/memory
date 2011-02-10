@@ -1,14 +1,41 @@
-%h1 Remember when?
-- form_for Story.new do |f|
-  %ul
-    %li.text
-      = f.label :location
-      = f.text_field :location
-    %li.text
-      = f.label :when
-      = f.text_field :when
-    %li.text
-      = f.label :what
-      = f.text_field :what
-    %li.submit
-      = f.submit "Create Story"
+#intro
+  %p.top 
+    Connect with friends and family around the memories you share. Create stories and share with friends and family on facebook. 
+
+  %p.bottom Getting started is easy...
+  
+#new-story
+  %h2 Remember when?
+
+  - form_for Story.new do |f|
+    #inputs
+      %ul
+        %li.text.first
+          %label{:for => "story_what"}
+            %strong
+              What?
+            %small e.g. My First Kiss
+          = f.text_field :what, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+
+        %li.text
+          %label{:for => "story_location"}
+            %strong
+              Where?
+            %small e.g. Junior High, Camp, Behind the bleachers
+          = f.text_field :location, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+
+        %li.text
+          %label{:for => "story_when"}
+            %strong
+              When?
+            %small e.g. 1994, Last Summer, July 18th 1994
+          = f.text_field :when, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+          
+        %li.text
+          %label{:for => "story_who"}
+            %strong
+              Who?
+            %small e.g. Imaginary Friend (not implemented)
+          = f.text_field :who, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+    .submit
+      = f.submit "Share your story"

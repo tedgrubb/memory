@@ -7,6 +7,7 @@ Memory::Application.routes.draw do
   root :to => "stories#new"
   
   resources :stories
+  resources :users
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
