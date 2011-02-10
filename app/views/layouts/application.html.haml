@@ -6,24 +6,25 @@
     %meta{ :charset => 'utf-8' }
     %meta{ :name => 'description', :content => "" }
     %meta{ :name => 'keywords', :content => "" }
-    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'layout'
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
+    - flash.each do |key, value|
+      .flash{ :class => key } 
+        = value
+    
     #header
       %h1
         %a{ :href => '/', :title => "" }
           Memory
-    - flash.each do |key, value|
-      .flash{ :class => key } 
-        = value
-    .user_nav
-    - if current_user
-      Welcome, 
-      = current_user.name  
-      = link_to "Sign Out", signout_path
-    - else 
-      = link_to "Sign in with Facebook", "/auth/facebook"
+      .user_nav
+        - if current_user
+          Welcome, 
+          = current_user.name  
+          = link_to "Sign Out", signout_path
+        - else 
+          = link_to "Sign in with Facebook", "/auth/facebook"
 
     #content
       =yield

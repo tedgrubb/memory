@@ -1,0 +1,69 @@
+=rounded(!px)
+  :-webkit-border-radius !px
+  :-moz-border-radius !px
+  :-border-radius !px
+=clearfix
+  *display:                 inline-block
+  &:after
+    content:                " "
+    display:                block
+    height:                 0
+    clear:                  both
+    visibility:             hidden
+=box_gradient(!top,!bottom)
+  background-image = "-moz-linear-gradient(top, #{!top}, #{!bottom})"
+  background-image = "-webkit-gradient(linear,left top,left bottom,color-stop(0, #{!top}),color-stop(1, #{!bottom}))"
+  -ms-filter = "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!top}', EndColorStr='#{!bottom}')"
+
+
+*
+  :margin 0
+  :padding 0
+
+ul
+  :list-style none
+  li
+    :margin-bottom 10px
+body
+  :background #FFF
+  :font-family "Lucida Grande"
+  :font-size 13px
+  :margin 0
+
+h1, h2, h3, h4, h5
+  :margin-bottom 20px
+
+#header
+  +clearfix
+  :width 940px
+  :padding 10px
+  :margin 0 auto 10px
+  :background #EEE
+  +rounded(0 0 10px 10px)
+  h1
+    :margin 0
+    :float left
+  .user_nav
+    :float right
+
+#content, #footer
+  :margin 0 auto
+  :width 940px
+  :padding 10px
+  
+form
+  label
+    :display block
+  .text
+    input
+      :padding 2px
+      :font-size 14px
+  .submit
+    input
+      :font-size 14px
+      :cursor pointer
+      :background #cae111
+      +box_gradient(#cae111, #b1c40b)
+      :border 1px solid #737f0c
+      :padding 10px 20px
+      +rounded(5px)

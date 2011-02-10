@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
   before_filter :load_story, :except => [:index, :create, :new]
   
   def index
-    
+    @stories = Story.all
   end
   
   def show
