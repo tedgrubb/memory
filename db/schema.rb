@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110210005350) do
     t.string   "location"
     t.string   "when"
     t.text     "what"
+    t.datetime "parsed_when"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

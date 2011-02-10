@@ -1,2 +1,22 @@
-%h2= story_title(@story)
-%p= h @story.what
+#story
+
+  #story-info
+    %h2 In this story
+    .pod
+      - 5.times do
+        .avatar
+    .pod
+      %strong Shared:
+      = time_ago_in_words @story.created_at
+      ago
+      
+  #story-content
+    %p.timestamp
+      = link_to @story.users.first.name, @story.users.first
+      shared a story
+      - unless @story.parsed_when.nil?
+        from
+        = time_ago_in_words @story.parsed_when
+        ago.
+    %h1= story_title(@story)
+    %p= h @story.what

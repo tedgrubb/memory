@@ -4,7 +4,7 @@ class CreateStories < ActiveRecord::Migration
       t.string :location
       t.string :when
       t.text :what
-
+      t.datetime :parsed_when
       t.timestamps
     end
   end

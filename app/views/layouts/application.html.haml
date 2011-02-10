@@ -2,7 +2,7 @@
 %html{ :lang => "en"}
   %head
     %title
-      Memory
+      memoiries
     %meta{ :charset => 'utf-8' }
     %meta{ :name => 'description', :content => "" }
     %meta{ :name => 'keywords', :content => "" }
@@ -17,11 +17,12 @@
     #header
       %h1
         %a{ :href => '/', :title => "" }
-          Memory
+          ==memoir<span>ies</span>
       .user_nav
         - if current_user
           Welcome, 
-          = current_user.name  
+          = link_to current_user.name, current_user
+          = "|"
           = link_to "Sign Out", signout_path
         - else 
           = link_to "Sign in with Facebook", "/auth/facebook"
@@ -29,7 +30,8 @@
     #content
       =yield
     #footer
-      %p
-        &copy; 
-        = Time.now.year
-        Memory
+      .inset
+        %p
+          &copy; 
+          = Time.now.year
+          memoiries

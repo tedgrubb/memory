@@ -1,26 +1,36 @@
+body {
+  background: white;
+  font-family: "Helvetica Neue";
+  font-size: 13px;
+  margin: 0; }
+
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  outline: 0; }
+
+h1, h2, h3, h4, h5 {
+  margin-bottom: 20px; }
+
+a {
+  text-decoration: none;
+  color: #0c91c8; }
+  a:hover {
+    text-decoration: underline; }
+
+p {
+  margin-bottom: 20px; }
 
 ul {
   list-style: none; }
   ul li {
     margin-bottom: 10px; }
 
-body {
-  background: white;
-  font-family: "Lucida Grande";
-  font-size: 13px;
-  margin: 0; }
-
-h1, h2, h3, h4, h5 {
-  margin-bottom: 20px; }
-
 #header {
   *display: inline-block;
-  width: 940px;
-  padding: 10px;
-  margin: 0 auto 10px;
+  width: 700px;
+  padding: 20px 40px;
+  margin: 0 auto 40px;
   background: #eeeeee;
   -webkit-border-radius: 0 0 10px 10px;
   -moz-border-radius: 0 0 10px 10px;
@@ -32,30 +42,126 @@ h1, h2, h3, h4, h5 {
     clear: both;
     visibility: hidden; }
   #header h1 {
+    font-size: 34px;
     margin: 0;
     float: left; }
+    #header h1 a {
+      color: black; }
+      #header h1 a span {
+        color: #0c91c8; }
   #header .user_nav {
     float: right; }
 
-#content, #footer {
+#content, #footer .inset {
   margin: 0 auto;
-  width: 940px;
-  padding: 10px; }
+  width: 700px; }
 
 form label {
   display: block; }
 form .text input {
+  font-family: inherit;
   padding: 2px;
   font-size: 14px; }
 form .submit input {
-  font-size: 14px;
+  font-weight: bold;
+  font-family: inherit;
+  color: white;
+  box-shadow: inset 0 0 2px white;
+  -moz-box-shadow: inset 0 0 2px white;
+  -webkit-box-shadow: inset 0 0 2px white;
+  text-shadow: 1px 1px 2px #666666;
+  font-size: 18px;
   cursor: pointer;
   background: #cae111;
-  background-image: -moz-linear-gradient(top, #cae111, #b1c40b);
-  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #cae111),color-stop(1, #b1c40b));
-  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#cae111', EndColorStr='#b1c40b');
-  border: 1px solid #737f0c;
+  background-image: -moz-linear-gradient(top, #3cb3e4, #0c91c8);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #3cb3e4),color-stop(1, #0c91c8));
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#3cb3e4', EndColorStr='#0c91c8');
+  border: 1px solid #025d83;
   padding: 10px 20px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -border-radius: 5px; }
+  form .submit input:hover {
+    box-shadow: inset 0 0 10px #0c91c8;
+    -moz-box-shadow: inset 0 0 10px #0c91c8;
+    -webkit-box-shadow: inset 0 0 10px #0c91c8; }
+
+#intro .top {
+  font-weight: 200;
+  font-size: 25px; }
+#intro .bottom {
+  font-size: 18px; }
+
+#new-story h2 {
+  margin-bottom: 5px; }
+#new-story .submit {
+  float: right; }
+#new-story #inputs {
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -border-radius: 10px;
+  border: 1px solid #cccccc;
+  box-shadow: inset 1px 1px 2px #dddddd;
+  -moz-box-shadow: inset 1px 1px 2px #dddddd;
+  -webkit-box-shadow: inset 1px 1px 2px #dddddd; }
+  #new-story #inputs .text {
+    padding-top: 8px;
+    border-top: 1px dotted #cccccc;
+    position: relative; }
+    #new-story #inputs .text.first {
+      border: none; }
+    #new-story #inputs .text.focused label {
+      display: none; }
+    #new-story #inputs .text label {
+      width: 100%;
+      cursor: text;
+      padding: 5px;
+      font-size: 30px;
+      color: #cccccc;
+      position: absolute; }
+      #new-story #inputs .text label strong {
+        color: black; }
+    #new-story #inputs .text input {
+      width: 100%;
+      font-size: 30px;
+      border: 0;
+      width: 580p; }
+
+#story #story-content {
+  float: left;
+  width: 480px; }
+  #story #story-content .timestamp {
+    color: #777777; }
+#story #story-info {
+  float: right;
+  width: 200px; }
+  #story #story-info .pod {
+    *display: inline-block;
+    margin-bottom: 20px; }
+    #story #story-info .pod:after {
+      content: " ";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    #story #story-info .pod .avatar {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #dddddd;
+      background-color: #eeeeee;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      float: left; }
+      #story #story-info .pod .avatar.large {
+        width: 200px;
+        height: 200px; }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  #footer .inset {
+    padding-top: 10px;
+    border-top: 1px dotted #cccccc; }
