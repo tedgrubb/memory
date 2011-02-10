@@ -50,6 +50,7 @@ ul {
       #header h1 a span {
         color: #0c91c8; }
   #header .user_nav {
+    padding-top: 15px;
     float: right; }
 
 #content, #footer .inset {

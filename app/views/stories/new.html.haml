@@ -11,11 +11,11 @@
     #inputs
       %ul
         %li.text.first
-          %label{:for => "story_when"}
+          %label{:for => "story_what"}
             %strong
-              When?
-            %small e.g. 1994, Last Summer, July 18th 1994
-          = f.text_field :when, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+              What?
+            %small e.g. My First Kiss
+          = f.text_field :what, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
 
         %li.text
           %label{:for => "story_location"}
@@ -25,11 +25,11 @@
           = f.text_field :location, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
 
         %li.text
-          %label{:for => "story_what"}
+          %label{:for => "story_when"}
             %strong
-              What?
-            %small e.g. My First Kiss
-          = f.text_field :what, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+              When?
+            %small e.g. 1994, Last Summer, July 18th 1994
+          = f.text_field :when, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
           
         %li.text
           %label{:for => "story_who"}
