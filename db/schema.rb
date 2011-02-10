@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210023020) do
+ActiveRecord::Schema.define(:version => 20110210050531) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20110210023020) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
+    t.text     "raw_auth"
   end
 
 end

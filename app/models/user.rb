@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)  
     create! do |user|  
+      user.raw_auth = auth
       user.provider = auth["provider"]  
       user.uid = auth["uid"]  
       user.token = auth["credentials"]["token"]  
