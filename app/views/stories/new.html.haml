@@ -1,0 +1,13 @@
+- form_for Story.new do |f|
+  %ul
+    %li
+      = f.label :location
+      = f.text_field :location
+    %li
+      = f.label :when
+      = f.text_field :when
+    %li
+      = f.label :what
+      = f.text_field :what
+    %li.submit
+      = f.submit "Create Story"
