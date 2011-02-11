@@ -1,12 +1,9 @@
 class SessionsController < ApplicationController
   def new
-
   end
 
   def create  
-    auth = request.env["omniauth.auth"]  
-    logger.info auth.to_yaml
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)  
+    user = User.authenticate_with_omniauth(request.env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to root_url, :notice => "Signed in!"
   end  
