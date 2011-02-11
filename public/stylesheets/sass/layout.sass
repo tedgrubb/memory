@@ -20,7 +20,6 @@
   :-webkit-box-shadow = !px !hex
 
 html, body
-  :position relative
   :height 100%
 body
   :background #FFF
@@ -49,6 +48,12 @@ ul
   li
     :margin-bottom 10px
 
+#container
+  :min-height 100%
+  :position relative
+  #content
+    +clearfix
+    :padding-bottom 80px
 #header
   +clearfix
   :width 700px

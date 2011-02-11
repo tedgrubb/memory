@@ -1,5 +1,4 @@
 html, body {
-  position: relative;
   height: 100%; }
 
 body {
@@ -29,6 +28,19 @@ ul {
   list-style: none; }
   ul li {
     margin-bottom: 10px; }
+
+#container {
+  min-height: 100%;
+  position: relative; }
+  #container #content {
+    *display: inline-block;
+    padding-bottom: 80px; }
+    #container #content:after {
+      content: " ";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
 
 #header {
   *display: inline-block;

@@ -16,7 +16,7 @@ class Story < ActiveRecord::Base
       story = create(params[:story])
 
       Story.create_user_story(user, story, true)
-      p friends
+
       friends.split(",").each do |f|
         u = User.find_or_create_by_uid(f.to_s)
         Story.create_user_story(u, story, false)

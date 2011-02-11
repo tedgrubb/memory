@@ -14,25 +14,25 @@
     - flash.each do |key, value|
       .flash{ :class => key } 
         = value
-    
-    #header
-      %h1
-        %a{ :href => '/', :title => "" }
-          memoirie
-      .user_nav
-        - if current_user
-          Welcome, 
-          = link_to current_user.name, current_user
-          = "|"
-          = link_to "Sign Out", signout_path
-        - else 
-          = link_to "Sign in with Facebook", "/auth/facebook"
+    #container
+      #header
+        %h1
+          %a{ :href => '/', :title => "" }
+            memoirie
+        .user_nav
+          - if current_user
+            Welcome, 
+            = link_to current_user.name, current_user
+            = "|"
+            = link_to "Sign Out", signout_path
+          - else 
+            = link_to "Sign in with Facebook", "/auth/facebook"
 
-    #content
-      =yield
-    #footer
-      .inset
-        %p
-          &copy; 
-          = Time.now.year
-          memoirie
+      #content
+        =yield
+      #footer
+        .inset
+          %p
+            &copy; 
+            = Time.now.year
+            memoirie
