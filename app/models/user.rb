@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
       user.name = auth["user_info"]["name"]  
     end  
   end
+
+  def friends
+    Friend.new(self)
+  end
 end
