@@ -1,4 +1,8 @@
 Memory::Application.configure do
+
+  FACEBOOK_KEY = '463b9b99d6090700ec12780e4d42efc4'
+  FACEBOOK_SECRET = 'd706e920926fecece4fff490518ba02d'
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -46,4 +50,5 @@ Memory::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
 end

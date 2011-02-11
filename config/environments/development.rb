@@ -1,4 +1,8 @@
 Memory::Application.configure do
+  
+  FACEBOOK_KEY = '0f8813f4a483be7538c9c8ab4ed9d8dc'
+  FACEBOOK_SECRET = '0e6ffca9bf393917678b5e9d9d5630e3'
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -22,5 +26,6 @@ Memory::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
 end
 
