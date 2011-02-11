@@ -19,7 +19,9 @@
   :-moz-box-shadow = !px !hex
   :-webkit-box-shadow = !px !hex
 
-
+html, body
+  :position relative
+  :height 100%
 body
   :background #FFF
   :font-family "Helvetica Neue"
@@ -54,6 +56,9 @@ ul
   :margin 0 auto 40px
   :background #EEE
   +rounded(0 0 10px 10px)
+  :border 1px solid #DDD
+  :border-top none
+  +box_shadow(inset 0 0 2px, #FFF)
   h1
     :font-size 34px
     :margin 0
@@ -98,13 +103,13 @@ form
 #intro
   .top
     :font-weight 200
-    :font-size 25px
+    :font-size 30px
   .bottom
     :font-size 18px
     
 #new-story
   h2
-    :margin-bottom 5px
+    :margin-bottom 10px
   .submit
     :float right
   #inputs
@@ -113,6 +118,23 @@ form
     +rounded(10px)
     :border 1px solid #CCC
     +box_shadow(inset 1px 1px 2px, #DDD)
+    #selected
+      +clearfix
+      .selected
+        :background #EEE
+        +rounded(10px)
+        :position relative
+        :padding 5px 30px 5px 10px
+        :float left
+        :margin-right 10px
+        :margin-bottom 10px
+        :border 1px solid #DDD
+        img
+          :cursor pointer
+          :margin-left 10px
+          :position absolute
+          :right 5px
+          :top 4px
     .text
       :padding-top 8px
       :border-top 1px dotted #CCC
@@ -150,13 +172,14 @@ form
       +clearfix
       :margin-bottom 20px
       .avatar
-        :width 32px
-        :height 32px
+        :padding 2px
         :border 1px solid #DDD
         :background-color #EEE
         :margin-right 5px
         :margin-bottom 5px
         :float left
+        img
+          :float left
         &.large
           :width 200px
           :height 200px
@@ -169,3 +192,27 @@ form
     :padding-top 10px
     :border-top 1px dotted #CCC
         
+        
+.autocomplete-w1 
+  :background url(img/shadow.png) no-repeat bottom right
+  :position absolute 
+  :top 4px 
+  :left 3px
+.autocomplete 
+  :width 300px
+  :border 1px solid #999
+  :background #FFF
+  :cursor default
+  :text-align left
+  :max-height 350px
+  :overflow auto
+  :margin -6px 6px 6px -6px
+  :overflow-x hidden
+  .selected 
+    :background #F0F0F0
+  div 
+    :padding 2px 5px
+    :white-space nowrap
+  strong
+    :font-weight normal
+    :color #3399FF

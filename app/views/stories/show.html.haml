@@ -3,8 +3,9 @@
   #story-info
     %h2 In this story
     .pod
-      - 5.times do
-        .avatar
+      - @story.users.each do |user|
+        = link_to image_tag(user.photo_url("square")), user, :class => "avatar"
+
     .pod
       %strong Shared:
       = time_ago_in_words @story.created_at

@@ -1,14 +1,16 @@
 #intro
   %p.top 
-    Share memories with your friends and family on facebook.
+    Share memories with friends and family on facebook.
 
-  %p.bottom Getting started is easy...
+  -# %p.bottom Remember that time back in highschool school when you _____________________?
   
 #new-story
   %h2 Remember when?
 
   - form_for Story.new do |f|
     #inputs
+      %div{:style => "hidden"}
+        = f.hidden_field :who
       %ul
         %li.text.first
           %label{:for => "story_what"}
@@ -30,12 +32,46 @@
               When?
             %small e.g. 1994, Last Summer, July 18th 1994
           = f.text_field :when, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
-          
+
         %li.text
-          %label{:for => "story_who"}
-            %strong
-              Who?
-            %small e.g. Imaginary Friend (not implemented)
-          = f.text_field :who, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+          #selected
+          %div{:style => "position:relative"}
+            %label{:for => "query"}
+              %strong
+                Who?
+              %small e.g. Imaginary Friend (not implemented)
+            = text_field_tag "query", nil, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+            :javascript
+              function remove_selected(id) {
+                new Effect.Fade(id, {duraiton: 0.6, afterFinish: function(el) {
+                  el.remove();
+                }});
+                a = $F('story_who').split(",");
+                new_a = $A(a).without(id);
+                $('story_who').setValue(new_a.join(','));
+              }
+              new Autocomplete('query', { 
+                  serviceUrl: #{search_users_path.to_json},
+                  minChars:2, 
+                  maxHeight:400,
+                  width:300,
+                  deferRequestBy:100,
+                  // callback function:
+                  onSelect: function(value, data) {
+                    var v = $F('story_who') == "" ? data : $F('story_who') + "," + data
+                    $('story_who').setValue(v);
+                    $('query').clear().focus();
+                    new Insertion.Bottom("selected", "<strong id=\""+data+"\" class=\"selected\">"+value+"<img src=\"/images/x.png\" onclick=\"remove_selected(\'"+data+"\');return false;\"></strong>")
+                  }
+                });
+            
     .submit
       = f.submit "Share your story"
+
+-# #live-search
+-#   %ul 
+-#     - current_user.friends.all(:limit => 10).sort_by{|s| s["name"] }.each do |u|
+-#       %li
+-#         =# image_tag "http://graph.facebook.com/#{u["id"]}/picture?type=square"
+-#         = u["name"]
+-#         = u["id"]

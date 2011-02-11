@@ -3,6 +3,7 @@
     %h2= @user.name
     .pod
       .avatar.large
+        = image_tag @user.photo_url("large")
   #story-content
     %h1
       Timeline

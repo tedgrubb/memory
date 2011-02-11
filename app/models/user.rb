@@ -23,8 +23,21 @@ class User < ActiveRecord::Base
       user.name = auth["user_info"]["name"]  
     end  
   end
+  
+  def self.find_or_create_by_uid(uid)
+    unless u = User.find_by_uid(uid)
+      u = User.create(:uid => uid, :provider => "facebook")
+    end
+    u
+  end
 
   def friends
     Friend.new(self)
   end
+  
+  def photo_url(size = "square")
+    # sizes [square, small, medium, large]
+    "http://graph.facebook.com/#{self.uid}/picture?type=#{size}"
+  end
+  
 end

@@ -1,3 +1,7 @@
+html, body {
+  position: relative;
+  height: 100%; }
+
 body {
   background: white;
   font-family: "Helvetica Neue";
@@ -34,7 +38,12 @@ ul {
   background: #eeeeee;
   -webkit-border-radius: 0 0 10px 10px;
   -moz-border-radius: 0 0 10px 10px;
-  -border-radius: 0 0 10px 10px; }
+  -border-radius: 0 0 10px 10px;
+  border: 1px solid #dddddd;
+  border-top: none;
+  box-shadow: inset 0 0 2px white;
+  -moz-box-shadow: inset 0 0 2px white;
+  -webkit-box-shadow: inset 0 0 2px white; }
   #header:after {
     content: " ";
     display: block;
@@ -89,12 +98,12 @@ form .submit input {
 
 #intro .top {
   font-weight: 200;
-  font-size: 25px; }
+  font-size: 30px; }
 #intro .bottom {
   font-size: 18px; }
 
 #new-story h2 {
-  margin-bottom: 5px; }
+  margin-bottom: 10px; }
 #new-story .submit {
   float: right; }
 #new-story #inputs {
@@ -107,6 +116,31 @@ form .submit input {
   box-shadow: inset 1px 1px 2px #dddddd;
   -moz-box-shadow: inset 1px 1px 2px #dddddd;
   -webkit-box-shadow: inset 1px 1px 2px #dddddd; }
+  #new-story #inputs #selected {
+    *display: inline-block; }
+    #new-story #inputs #selected:after {
+      content: " ";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    #new-story #inputs #selected .selected {
+      background: #eeeeee;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -border-radius: 10px;
+      position: relative;
+      padding: 5px 30px 5px 10px;
+      float: left;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #dddddd; }
+      #new-story #inputs #selected .selected img {
+        cursor: pointer;
+        margin-left: 10px;
+        position: absolute;
+        right: 5px;
+        top: 4px; }
   #new-story #inputs .text {
     padding-top: 8px;
     border-top: 1px dotted #cccccc;
@@ -148,13 +182,14 @@ form .submit input {
       clear: both;
       visibility: hidden; }
     #story #story-info .pod .avatar {
-      width: 32px;
-      height: 32px;
+      padding: 2px;
       border: 1px solid #dddddd;
       background-color: #eeeeee;
       margin-right: 5px;
       margin-bottom: 5px;
       float: left; }
+      #story #story-info .pod .avatar img {
+        float: left; }
       #story #story-info .pod .avatar.large {
         width: 200px;
         height: 200px; }
@@ -166,3 +201,28 @@ form .submit input {
   #footer .inset {
     padding-top: 10px;
     border-top: 1px dotted #cccccc; }
+
+.autocomplete-w1 {
+  background: url(img/shadow.png) no-repeat bottom right;
+  position: absolute;
+  top: 4px;
+  left: 3px; }
+
+.autocomplete {
+  width: 300px;
+  border: 1px solid #999999;
+  background: white;
+  cursor: default;
+  text-align: left;
+  max-height: 350px;
+  overflow: auto;
+  margin: -6px 6px 6px -6px;
+  overflow-x: hidden; }
+  .autocomplete .selected {
+    background: #f0f0f0; }
+  .autocomplete div {
+    padding: 2px 5px;
+    white-space: nowrap; }
+  .autocomplete strong {
+    font-weight: normal;
+    color: #3399ff; }
