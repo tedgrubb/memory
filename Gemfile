@@ -11,6 +11,8 @@ gem 'omniauth'
 gem 'chronic'
 gem 'httparty'
 gem 'json'
+gem 'paperclip', '~> 2.3'
+gem 'aws-s3', :require => 'aws/s3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

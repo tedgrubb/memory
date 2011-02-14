@@ -2,6 +2,13 @@ class Story < ActiveRecord::Base
   has_many :user_stories
   has_many :users, :through => :user_stories
   has_many :comments
+
+  has_attached_file :photo,
+                    :storage        => :s3,
+                    :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+                    :bucket         => "memoirie_#{Rails.env}",
+                    :path           => ":class/:id/:basename_:style.:extension",
+                    :styles         => { :thumb => "100x100>" }
   
   validates_presence_of :location, :when, :what
   

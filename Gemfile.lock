@@ -30,6 +30,10 @@ GEM
     activesupport (3.0.4)
     addressable (2.2.4)
     arel (2.0.8)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     builder (2.1.2)
     chronic (0.3.0)
     crack (0.1.8)
@@ -45,7 +49,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    httparty (0.7.3)
+    httparty (0.7.4)
       crack (= 0.1.8)
     i18n (0.5.0)
     json (1.5.1)
@@ -93,6 +97,9 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
@@ -127,15 +134,18 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    xml-simple (1.0.14)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-s3
   chronic
   haml-rails
   httparty
   json
   mysql2
   omniauth
+  paperclip (~> 2.3)
   rails (= 3.0.4)

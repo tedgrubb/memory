@@ -7,7 +7,7 @@
 #new-story
   %h2 Remember when?
 
-  - form_for Story.new do |f|
+  - form_for Story.new, :html => { :multipart => true } do |f|
     #inputs
       %div{:style => "hidden"}
         = f.hidden_field :who
@@ -65,6 +65,13 @@
                   }
                 });
             
+        %li.file
+          %label{:for => "story_photo"}
+            %strong
+              Photo?
+            %small Pictures or it didn't happen
+          = f.file_field :photo
+
     .submit
       = f.submit "Share your story"
 
