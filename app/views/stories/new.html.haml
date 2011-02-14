@@ -7,7 +7,7 @@
 #new-story
   %h2 Remember when?
 
-  - form_for Story.new, :html => { :multipart => true } do |f|
+  = form_for Story.new, :html => { :multipart => true } do |f|
     #inputs
       %div{:style => "hidden"}
         = f.hidden_field :who
