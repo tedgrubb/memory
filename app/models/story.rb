@@ -2,6 +2,7 @@ class Story < ActiveRecord::Base
   has_many :user_stories
   has_many :users, :through => :user_stories
   has_many :comments
+  has_one :owner,  :through => :user_stories, :source => :user, :conditions => { 'user_stories.owner' => true }
 
   has_attached_file :photo,
                     :storage        => :s3,
