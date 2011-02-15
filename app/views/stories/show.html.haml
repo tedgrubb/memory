@@ -13,7 +13,7 @@
       
   #story-content
     %p.timestamp
-      = link_to @story.users.first.name, @story.users.first
+      = link_to @story.owner.name, @story.owner
       shared a story
       - unless @story.parsed_when.nil?
         from
