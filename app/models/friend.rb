@@ -4,7 +4,7 @@ class Friend
   end
 
   # options: limit, offset
-  def all(options={})
-    @fb.get('/me/friends', :query => options)
+  def all(query={})
+    @fb.get('/me/friends', query)
   end
 end

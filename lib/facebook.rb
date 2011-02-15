@@ -8,9 +8,9 @@ class Facebook
   end
 
   # HTTParty get is on the class, so let's call that one and wrap it up in some error handling.
-  def get(path, options = {})
+  def get(path, query = {})
     begin
-      response = self.class.get(path, options)
+      response = self.class.get(path, :query => query)
       if response.parsed_response.key? "error"
         raise response.parsed_response["error"]["message"]
       else
