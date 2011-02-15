@@ -21,9 +21,10 @@ class Story < ActiveRecord::Base
       friends = params[:story].delete(:who)
       params[:story][:parsed_when] = Story.parse_date(params[:story][:when])
 
-      story = create(params[:story])
-
-      Story.create_user_story(user, story, true)
+      story = new(params[:story])
+      story.user_stories.build(:user => user, :story => story, :owner => true)
+      story.save
+      #Story.create_user_story(user, story, true)
 
       friends.split(",").each do |f|
         u = User.find_or_create_by_uid(f.to_s)

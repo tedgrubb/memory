@@ -3,6 +3,8 @@ Memory::Application.configure do
   FACEBOOK_KEY = '463b9b99d6090700ec12780e4d42efc4'
   FACEBOOK_SECRET = 'd706e920926fecece4fff490518ba02d'
 
+  URL_HOST = "memoirie.heroku.com"
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
