@@ -6,6 +6,8 @@
     %meta{ :charset => 'utf-8' }
     %meta{ :name => 'description', :content => "" }
     %meta{ :name => 'keywords', :content => "" }
+    - if content_for? :meta_image_src
+      %link{ :rel => "image_src", :href => yield(:meta_image_src) }
     = stylesheet_link_tag 'layout'
     = javascript_include_tag :defaults
     = javascript_include_tag "autocomplete.js"
