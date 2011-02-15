@@ -7,11 +7,6 @@ class Facebook
     self.class.default_params :access_token => token
   end
 
-  # options: limit, offset
-  def all(options={})
-    get('/me/friends', :query => options)
-  end
-
   # HTTParty get is on the class, so let's call that one and wrap it up in some error handling.
   def get(path, options = {})
     begin
