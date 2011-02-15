@@ -83,7 +83,8 @@ form label {
 form .text input {
   font-family: inherit;
   padding: 2px;
-  font-size: 14px; }
+  font-size: 14px;
+  -webkit-appearance: none; }
 form .submit input {
   font-weight: bold;
   font-family: inherit;
@@ -110,14 +111,25 @@ form .submit input {
 
 #intro .top {
   font-weight: 200;
-  font-size: 30px; }
+  font-size: 30px;
+  margin-bottom: 25px; }
 #intro .bottom {
   font-size: 18px; }
 
 #new-story h2 {
-  margin-bottom: 10px; }
+  margin-bottom: 15px; }
 #new-story .submit {
   float: right; }
+#new-story .file {
+  padding: 15px 0 0 25px;
+  float: left; }
+  #new-story .file label {
+    float: left;
+    padding-right: 10px; }
+    #new-story .file label strong {
+      color: black; }
+  #new-story .file input {
+    float: left; }
 #new-story #inputs {
   padding: 5px 20px;
   margin-bottom: 20px;

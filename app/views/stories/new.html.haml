@@ -1,8 +1,6 @@
 #intro
   %p.top 
-    Share memories with friends and family on facebook.
-
-  -# %p.bottom Remember that time back in highschool school when you _____________________?
+    Share memories with friends &amp; family on facebook
   
 #new-story
   %h2 Remember when?
@@ -12,35 +10,35 @@
       %div{:style => "hidden"}
         = f.hidden_field :who
       %ul
-        %li.text.first
+        %li.text.first.prompted
           %label{:for => "story_what"}
             %strong
               What?
-            %small e.g. My First Kiss
-          = f.text_field :what, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+            %small e.g. Family Reunion
+          = f.text_field :what
 
-        %li.text
+        %li.text.prompted
           %label{:for => "story_location"}
             %strong
               Where?
-            %small e.g. Junior High, Camp, Behind the bleachers
-          = f.text_field :location, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+            %small e.g. Grubb's Landing, DE
+          = f.text_field :location
 
-        %li.text
+        %li.text.prompted
           %label{:for => "story_when"}
             %strong
               When?
-            %small e.g. 1994, Last Summer, July 18th 1994
-          = f.text_field :when, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+            %small e.g. August 2002
+          = f.text_field :when
 
-        %li.text
+        %li.text.prompted
           #selected
           %div{:style => "position:relative"}
             %label{:for => "query"}
               %strong
                 Who?
-              %small e.g. Imaginary Friend (not implemented)
-            = text_field_tag "query", nil, :onfocus => "$(this).up('li').addClassName('focused')", :onblur => "if($F(this).empty()) $(this).up('li').removeClassName('focused')"
+              %small e.g. Reuben, Lewis, Joe, Jonathan
+            = text_field_tag "query"
             :javascript
               function remove_selected(id) {
                 new Effect.Fade(id, {duraiton: 0.6, afterFinish: function(el) {
@@ -65,12 +63,11 @@
                   }
                 });
             
-        %li.file
-          %label{:for => "story_photo"}
-            %strong
-              Photo?
-            %small Pictures or it didn't happen
-          = f.file_field :photo
+    .file
+      %label{:for => "story_photo"}
+        %strong
+          Add a photo?
+      = f.file_field :photo
 
     .submit
       = f.submit "Share your story"

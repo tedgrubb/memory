@@ -10,6 +10,18 @@
     = javascript_include_tag :defaults
     = javascript_include_tag "autocomplete.js"
     = csrf_meta_tag
+    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
+    %meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
+    %meta{:name => "viewport", :content => "width=780, user-scalable=no;"}
+    :javascript
+      function ismobilesafari() {
+        if(navigator.userAgent.indexOf('iPod')    != -1)  {return true;}
+        if(navigator.userAgent.indexOf('iPad')    != -1)  {return true;}
+        if(navigator.userAgent.indexOf('iPhone')  != -1)  {return true;}
+        else{return false;}
+      }
+      var mobilesafari = ismobilesafari();
+    
   %body
     - flash.each do |key, value|
       .flash{ :class => key } 
