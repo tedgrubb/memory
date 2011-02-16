@@ -24,3 +24,10 @@
     %p
       =# image_tag @story.photo.url(:thumb)
       = @story.what
+
+  %script{ :src => "http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php", :type => "text/javascript" }
+
+  %fb:comments
+
+  %script{ :type => "text/javascript" }
+    = "FB.init('#{FACEBOOK_KEY}', '/xd_receiver.htm');"
