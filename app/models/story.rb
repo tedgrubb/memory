@@ -23,7 +23,6 @@ class Story < ActiveRecord::Base
     
     transaction do
       friends = params[:story].delete(:who)
-      p friends
       params[:story][:parsed_when] = Story.parse_date(params[:story][:when])
 
       story = new(params[:story])
@@ -33,8 +32,6 @@ class Story < ActiveRecord::Base
 
       friends.split(",")[0].each do |friend|
         if f = friend.split("|")
-          p "Where does this go!?"
-          p f
           u = User.find_or_create_by_uid(f.first.to_s, f.last.to_s)
           Story.create_user_story(u, story, false)
         end
@@ -50,7 +47,8 @@ class Story < ActiveRecord::Base
     fb.post('/me/feed', {
       :link => story_url(self),
       :name => "#{self.when} @ #{self.location}",
-      :message => message
+      :message => self.message,
+      :description => "Start sharing memories with friends and family on facebook. #{root_url}"
     })
   end
   
