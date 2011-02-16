@@ -75,8 +75,10 @@ ul {
     clear: both;
     visibility: hidden; }
   #header h1 {
-    font-size: 34px;
-    margin: 0;
+    font-family: "museo-1", "museo-2", serif;
+    font-weight: 500;
+    font-size: 45px;
+    margin: -5px 0 0 0;
     float: left; }
     #header h1 a {
       color: black; }
@@ -155,7 +157,8 @@ form .submit input {
   margin-right: 20px; }
 #intro h2 {
   color: #999999;
-  font-weight: 600;
+  font-weight: 500;
+  font-family: "museo-1", "museo-2", serif;
   letter-spacing: -1px;
   font-size: 40px; }
 #intro h3 {
