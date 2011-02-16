@@ -5,7 +5,7 @@
     %h2 In this story
     .pod
       - @story.users.each do |user|
-        = link_to image_tag(user.photo_url("square")), user, :class => "avatar"
+        = link_to image_tag(user.photo_url("square")), user, :class => "avatar", :title => "#{user.name}"
 
     .pod
       %strong Shared:
@@ -27,7 +27,7 @@
 
   %script{ :src => "http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php", :type => "text/javascript" }
 
-  %fb:comments
+  %fb:comments{:numposts => "10", :width => "480", :publish_feed => "true"}
 
   %script{ :type => "text/javascript" }
     = "FB.init('#{FACEBOOK_KEY}', '/xd_receiver.htm');"
