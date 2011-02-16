@@ -1,15 +1,19 @@
 class Story < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+  
+  default_url_options[:host] = URL_HOST
+
   has_many :user_stories
   has_many :users, :through => :user_stories
   has_many :comments
   has_one :owner,  :through => :user_stories, :source => :user, :conditions => { 'user_stories.owner' => true }
 
-  has_attached_file :photo,
-                    :storage        => :s3,
-                    :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
-                    :bucket         => "memoirie_#{Rails.env}",
-                    :path           => ":class/:id/:basename_:style.:extension",
-                    :styles         => { :thumb => "100x100>" }
+  # has_attached_file :photo,
+  #                   :storage        => :s3,
+  #                   :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+  #                   :bucket         => "memoirie_#{Rails.env}",
+  #                   :path           => ":class/:id/:basename_:style.:extension",
+  #                   :styles         => { :thumb => "100x100>" }
   
   validates_presence_of :location, :when, :what
   
@@ -19,6 +23,7 @@ class Story < ActiveRecord::Base
     
     transaction do
       friends = params[:story].delete(:who)
+      p friends
       params[:story][:parsed_when] = Story.parse_date(params[:story][:when])
 
       story = new(params[:story])
@@ -26,16 +31,39 @@ class Story < ActiveRecord::Base
       story.save
       #Story.create_user_story(user, story, true)
 
-      friends.split(",").each do |f|
-        u = User.find_or_create_by_uid(f.to_s)
-        Story.create_user_story(u, story, false)
+      friends.split(",")[0].each do |friend|
+        if f = friend.split("|")
+          p "Where does this go!?"
+          p f
+          u = User.find_or_create_by_uid(f.first.to_s, f.last.to_s)
+          Story.create_user_story(u, story, false)
+        end
       end
-      
+      story.facebook_post
       return story
     end
   
   end
   
+  def facebook_post
+    fb = Facebook.new(self.owner.token)
+    fb.post('/me/feed', {
+      :link => story_url(self),
+      :name => "#{self.when} @ #{self.location}",
+      :message => message
+    })
+  end
+  
+  
+  def message
+    result = "#{self.what}"
+    tags = []
+    self.users.each do |u|
+      tags << "@[#{u.uid}:1:#{u.name}]"
+    end
+    result += " (cc: #{tags.join(", ")})"
+    result
+  end
   
 private
 
@@ -51,4 +79,5 @@ private
     parsed_date = Chronic.parse(raw_date)
     result = parsed_date ? parsed_date.to_date : nil
   end
+  
 end

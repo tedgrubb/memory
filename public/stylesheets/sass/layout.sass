@@ -31,7 +31,7 @@ body
   :margin 0
   :padding 0
   :outline 0
-  
+  :border 0
 h1, h2, h3, h4, h5
   :margin-bottom 20px
 
@@ -145,7 +145,7 @@ form
         :padding 5px 30px 5px 10px
         :float left
         :margin-right 10px
-        :margin-bottom 10px
+        :margin-top 10px
         :border 1px solid #DDD
         img
           :cursor pointer
@@ -212,13 +212,14 @@ form
         
         
 .autocomplete-w1 
-  :background url(img/shadow.png) no-repeat bottom right
+  //:background url(img/shadow.png) no-repeat bottom right
   :position absolute 
-  :top 4px 
-  :left 3px
+  :top 15px 
+  :left -15px
+  :width 480px
 .autocomplete 
-  :width 300px
-  :border 1px solid #999
+  :width 480px
+  :border 1px solid #CCC
   :background #FFF
   :cursor default
   :text-align left
@@ -227,10 +228,14 @@ form
   :margin -6px 6px 6px -6px
   :overflow-x hidden
   .selected 
-    :background #F0F0F0
+    :color #FFF
+    :background #3a589d
+    strong
+      :background #627cae
   div 
-    :padding 2px 5px
+    :color #000
+    :padding 10px 20px
     :white-space nowrap
   strong
-    :font-weight normal
-    :color #3399FF
+    :font-weight bold
+    :background #d8dfe8

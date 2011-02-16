@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
     end  
   end
   
-  def self.find_or_create_by_uid(uid)
+  def self.find_or_create_by_uid(uid, name)
     unless u = User.find_by_uid(uid)
-      u = User.create(:uid => uid, :provider => "facebook")
+      u = User.create(:uid => uid, :name => name, :provider => "facebook")
     end
     u
   end

@@ -14,14 +14,14 @@ class UsersController < ApplicationController
         matches << f unless f["name"].downcase.gsub!(query, '').nil?
       end
       matching_names = matches.map {|f| f["name"]}
-      matching_ids = matches.map {|f| f["id"]}
+      matching_data = matches.map {|f| "#{f["id"]}|#{f["name"]}"}
     end
     respond_to do |format|
       format.js do
         render :json => {
          :query => params[:query],
          :suggestions => matching_names,
-         :data => matching_ids
+         :data => matching_data
         }
       end
     end

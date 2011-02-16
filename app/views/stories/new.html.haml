@@ -8,7 +8,8 @@
   = form_for Story.new, :html => { :multipart => true } do |f|
     #inputs
       %div{:style => "hidden"}
-        = f.hidden_field :who
+        =# f.hidden_field :who
+        =# f.text_field :who
       %ul
         %li.text.first.prompted
           %label{:for => "story_what"}
@@ -32,7 +33,6 @@
           = f.text_field :when
 
         %li.text.prompted
-          #selected
           %div{:style => "position:relative"}
             %label{:for => "query"}
               %strong
@@ -40,34 +40,39 @@
               %small e.g. Reuben, Lewis, Joe, Jonathan
             = text_field_tag "query"
             :javascript
-              function remove_selected(id) {
-                new Effect.Fade(id, {duraiton: 0.6, afterFinish: function(el) {
-                  el.remove();
+              function remove_selected(id, name) {
+                console.log($("selected_"+id))
+                new Effect.Fade($("selected_"+id), {duration: 0.6, afterFinish: function(e) {
+                  e.element.remove();
                 }});
-                a = $F('story_who').split(",");
-                new_a = $A(a).without(id);
-                $('story_who').setValue(new_a.join(','));
+                // a = $F('story_who').split(",");
+                // new_a = $A(a).without(id);
+                // console.log(new_a)
+                // $('story_who').setValue(new_a.join(','));
               }
               new Autocomplete('query', { 
                   serviceUrl: #{search_users_path.to_json},
                   minChars:2, 
                   maxHeight:400,
-                  width:300,
+                  width:700,
                   deferRequestBy:100,
                   // callback function:
                   onSelect: function(value, data) {
-                    var v = $F('story_who') == "" ? data : $F('story_who') + "," + data
-                    $('story_who').setValue(v);
+                    var a = data.split("|");
+                    console.log(a[1]);
+                    //var v = $F('story_who') == "" ? [a] : $F('story_who') + "," + [a]
+                    //$('story_who').setValue(v);
                     $('query').clear().focus();
-                    new Insertion.Bottom("selected", "<strong id=\""+data+"\" class=\"selected\">"+value+"<img src=\"/images/x.png\" onclick=\"remove_selected(\'"+data+"\');return false;\"></strong>")
+                    new Insertion.Top("selected", "<strong id=\"selected_"+a[0]+"\" title=\""+a[1]+"\" class=\"selected\">"+value+"<img src=\"/images/x.png\" onclick=\"remove_selected("+a[0]+");return false;\"><input type=\"hidden\" name=\"story[who][]\" value=\""+data+"\" /></strong>")
                   }
                 });
             
-    .file
-      %label{:for => "story_photo"}
-        %strong
-          Add a photo?
-      = f.file_field :photo
+          #selected
+    -# .file
+    -#   %label{:for => "story_photo"}
+    -#     %strong
+    -#       Add a photo?
+    -#   = f.file_field :photo
 
     .submit
       = f.submit "Share your story"

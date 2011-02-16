@@ -10,7 +10,8 @@ body {
 * {
   margin: 0;
   padding: 0;
-  outline: 0; }
+  outline: 0;
+  border: 0; }
 
 h1, h2, h3, h4, h5 {
   margin-bottom: 20px; }
@@ -157,7 +158,7 @@ form .submit input {
       padding: 5px 30px 5px 10px;
       float: left;
       margin-right: 10px;
-      margin-bottom: 10px;
+      margin-top: 10px;
       border: 1px solid #dddddd; }
       #new-story #inputs #selected .selected img {
         cursor: pointer;
@@ -227,14 +228,14 @@ form .submit input {
     border-top: 1px dotted #cccccc; }
 
 .autocomplete-w1 {
-  background: url(img/shadow.png) no-repeat bottom right;
   position: absolute;
-  top: 4px;
-  left: 3px; }
+  top: 15px;
+  left: -15px;
+  width: 480px; }
 
 .autocomplete {
-  width: 300px;
-  border: 1px solid #999999;
+  width: 480px;
+  border: 1px solid #cccccc;
   background: white;
   cursor: default;
   text-align: left;
@@ -243,10 +244,14 @@ form .submit input {
   margin: -6px 6px 6px -6px;
   overflow-x: hidden; }
   .autocomplete .selected {
-    background: #f0f0f0; }
+    color: white;
+    background: #3a589d; }
+    .autocomplete .selected strong {
+      background: #627cae; }
   .autocomplete div {
-    padding: 2px 5px;
+    color: black;
+    padding: 10px 20px;
     white-space: nowrap; }
   .autocomplete strong {
-    font-weight: normal;
-    color: #3399ff; }
+    font-weight: bold;
+    background: #d8dfe8; }
