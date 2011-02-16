@@ -76,10 +76,11 @@ ul {
     visibility: hidden; }
   #header h1 {
     font-family: "museo-1", "museo-2", serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 45px;
     margin: -5px 0 0 0;
-    float: left; }
+    float: left;
+    text-shadow: 1px 1px 0 white; }
     #header h1 a {
       color: black; }
       #header h1 a span {
@@ -156,16 +157,23 @@ form .submit input {
   float: left;
   margin-right: 20px; }
 #intro h2 {
-  color: #999999;
-  font-weight: 500;
+  color: #333333;
+  font-weight: 700;
   font-family: "museo-1", "museo-2", serif;
   letter-spacing: -1px;
-  font-size: 40px; }
+  font-size: 40px;
+  margin-bottom: 15px; }
 #intro h3 {
-  color: #555555;
+  color: #777777;
   font-weight: 600;
   font-size: 20px;
-  margin-bottom: 10px; }
+  margin-bottom: 8px;
+  font-weight: 300; }
+  #intro h3 strong {
+    color: #777777;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: "museo-1", "museo-2", serif; }
 #intro .share-button {
   float: left;
   margin-top: 10px; }
@@ -173,7 +181,7 @@ form .submit input {
 .top {
   text-align: center;
   font-weight: 200;
-  font-size: 30px;
+  font-size: 34px;
   margin-bottom: 25px; }
 
 #new-story h2 {
@@ -247,6 +255,8 @@ form .submit input {
       color: #cccccc;
       position: absolute; }
       #new-story #inputs .text label strong {
+        font-weight: 700;
+        font-family: "museo-1", "museo-2", serif;
         color: black; }
     #new-story #inputs .text input {
       width: 100%;
@@ -301,6 +311,7 @@ form .submit input {
   bottom: 0;
   width: 100%; }
   #footer .inset {
+    width: 780px;
     padding-top: 10px;
     border-top: 1px dotted #cccccc; }
     #footer .inset p {
