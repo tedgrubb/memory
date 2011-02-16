@@ -1,86 +1,93 @@
-#intro
-  %p.top 
-    Share memories with friends &amp; family on facebook
+- unless current_user
+  #intro
+    %h1.top Share memories with friends on facebook
+    
+    = image_tag("mem-ss.png")
+    
+    %h2 How it works
+
+    %h3 1. Create memories
+    %h3 2. Share them with friends
+    %h3 3. They share with you
+    %h3 4. You have a social memoir
+    
+    = link_to "Share your story", "/auth/facebook", :class => "share-button"
+- else
+  %p.top
+    Share a memory with friends on facebook
   
-#new-story
-  %h2 Remember when?
-
-  = form_for Story.new, :html => { :multipart => true } do |f|
-    #inputs
-      %div{:style => "hidden"}
-        =# f.hidden_field :who
-        =# f.text_field :who
-      %ul
-        %li.text.first.prompted
-          %label{:for => "story_what"}
-            %strong
-              What?
-            %small e.g. Family Reunion
-          = f.text_field :what
-
-        %li.text.prompted
-          %label{:for => "story_location"}
-            %strong
-              Where?
-            %small e.g. Grubb's Landing, DE
-          = f.text_field :location
-
-        %li.text.prompted
-          %label{:for => "story_when"}
-            %strong
-              When?
-            %small e.g. August 2002
-          = f.text_field :when
-
-        %li.text.prompted
-          %div{:style => "position:relative"}
-            %label{:for => "query"}
+  #new-story
+    = form_for Story.new, :html => { :multipart => true } do |f|
+      #inputs
+        %div{:style => "hidden"}
+          =# f.hidden_field :who
+          =# f.text_field :who
+        %ul
+          %li.text.first.prompted
+            %label{:for => "story_what"}
               %strong
-                Who?
-              %small e.g. Reuben, Lewis, Joe, Jonathan
-            = text_field_tag "query"
-            :javascript
-              function remove_selected(id, name) {
-                console.log($("selected_"+id))
-                new Effect.Fade($("selected_"+id), {duration: 0.6, afterFinish: function(e) {
-                  e.element.remove();
-                }});
-                // a = $F('story_who').split(",");
-                // new_a = $A(a).without(id);
-                // console.log(new_a)
-                // $('story_who').setValue(new_a.join(','));
-              }
-              new Autocomplete('query', { 
-                  serviceUrl: #{search_users_path.to_json},
-                  minChars:2, 
-                  maxHeight:400,
-                  width:700,
-                  deferRequestBy:100,
-                  // callback function:
-                  onSelect: function(value, data) {
-                    var a = data.split("|");
-                    console.log(a[1]);
-                    //var v = $F('story_who') == "" ? [a] : $F('story_who') + "," + [a]
-                    //$('story_who').setValue(v);
-                    $('query').clear().focus();
-                    new Insertion.Top("selected", "<strong id=\"selected_"+a[0]+"\" title=\""+a[1]+"\" class=\"selected\">"+value+"<img src=\"/images/x.png\" onclick=\"remove_selected("+a[0]+");return false;\"><input type=\"hidden\" name=\"story[who][]\" value=\""+data+"\" /></strong>")
-                  }
-                });
+                What?
+              %small e.g. Family Reunion
+            = f.text_field :what
+
+          %li.text.prompted
+            %label{:for => "story_location"}
+              %strong
+                Where?
+              %small e.g. Grubb's Landing, DE
+            = f.text_field :location
+
+          %li.text.prompted
+            %label{:for => "story_when"}
+              %strong
+                When?
+              %small e.g. August 2002
+            = f.text_field :when
+
+          %li.text.prompted
+            %div{:style => "position:relative"}
+              %label{:for => "query"}
+                %strong
+                  Who?
+                %small e.g. Reuben, Lewis, Joe, Jonathan
+              = text_field_tag "query"
+              :javascript
+                function remove_selected(id, name) {
+                  console.log($("selected_"+id))
+                  new Effect.Fade($("selected_"+id), {duration: 0.6, afterFinish: function(e) {
+                    e.element.remove();
+                  }});
+                  // a = $F('story_who').split(",");
+                  // new_a = $A(a).without(id);
+                  // console.log(new_a)
+                  // $('story_who').setValue(new_a.join(','));
+                }
+                new Autocomplete('query', { 
+                    serviceUrl: #{search_users_path.to_json},
+                    minChars:2, 
+                    maxHeight:400,
+                    width:700,
+                    deferRequestBy:100,
+                    // callback function:
+                    onSelect: function(value, data) {
+                      var a = data.split("|");
+                      console.log(a[1]);
+                      //var v = $F('story_who') == "" ? [a] : $F('story_who') + "," + [a]
+                      //$('story_who').setValue(v);
+                      $('query').clear().focus();
+                      new Insertion.Top("selected", "<strong id=\"selected_"+a[0]+"\" title=\""+a[1]+"\" class=\"selected\">"+value+"<img src=\"/images/x.png\" onclick=\"remove_selected("+a[0]+");return false;\"><input type=\"hidden\" name=\"story[who][]\" value=\""+data+"\" /></strong>")
+                    }
+                  });
             
-          #selected
-    -# .file
-    -#   %label{:for => "story_photo"}
-    -#     %strong
-    -#       Add a photo?
-    -#   = f.file_field :photo
+            #selected
+      -# .file
+      -#   %label{:for => "story_photo"}
+      -#     %strong
+      -#       Add a photo?
+      -#   = f.file_field :photo
 
-    .submit
-      = f.submit "Share your story"
-
--# #live-search
--#   %ul 
--#     - current_user.friends.all(:limit => 10).sort_by{|s| s["name"] }.each do |u|
--#       %li
--#         =# image_tag "http://graph.facebook.com/#{u["id"]}/picture?type=square"
--#         = u["name"]
--#         = u["id"]
+      .submit
+        = f.submit "Share your story"
+      .warn
+        %strong Note:
+        This will post publically to your wall

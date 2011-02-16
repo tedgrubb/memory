@@ -26,5 +26,3 @@ Prompt = Class.create({
 document.observe("dom:loaded", function() {
 	$$(".prompted").each(function(el) { new Prompt(el); });
 });
-
-

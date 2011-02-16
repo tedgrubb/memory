@@ -47,6 +47,14 @@ ul
   :list-style none
   li
     :margin-bottom 10px
+.flash
+  :margin -10px auto 20px
+  :width 680px
+  :padding 10px
+  :text-align center
+  +rounded(10px)
+  :background #FFFFCC
+  :border 1px solid #FFFF99
 
 #container
   :min-height 100%
@@ -73,8 +81,9 @@ ul
       span
         :color #0c91c8
   .user_nav
-    :padding-top 15px
     :float right
+    .logged-in
+      :padding-top 15px
 
 #content, #footer .inset
   :margin 0 auto
@@ -105,14 +114,49 @@ form
       +rounded(5px)
       &:hover
         +box_shadow(inset 0 0 10px, #0c91c8)
-      
+
+.share-button
+  :float right
+  :font-weight bold
+  :font-family inherit
+  :color #FFF
+  +box_shadow(inset 0 0 2px, #FFF)
+  :text-shadow 1px 1px 2px #666
+  :font-size 18px
+  :cursor pointer
+  :background #cae111
+  +box_gradient(#3cb3e4, #0c91c8)
+  :border 1px solid #025d83
+  :padding 10px 20px
+  +rounded(5px)
+  &:hover
+    +box_shadow(inset 0 0 10px, #0c91c8)
+  
 #intro
-  .top
-    :font-weight 200
-    :font-size 30px
-    :margin-bottom 25px
-  .bottom
-    :font-size 18px
+  h1
+    :font-size 34px
+    :margin-bottom 40px
+  img
+    :float left
+    :margin-right 20px
+  h2
+    :color #999
+    :font-weight 600
+    :letter-spacing -1px
+    :font-size 40px
+  h3
+    :color #555
+    :font-weight 600
+    :font-size 20px
+    :margin-bottom 10px
+  .share-button
+    :float left
+    :margin-top 10px
+.top
+  :text-align center
+  :font-weight 200
+  :font-size 30px
+  :margin-bottom 25px
     
 #new-story
   h2
@@ -129,7 +173,12 @@ form
         :color #000
     input
       :float left
-
+  .warn
+    strong
+      :color red
+    :color #666
+    :float right
+    :padding 15px
   #inputs
     :padding 5px 20px
     :margin-bottom 20px
@@ -183,6 +232,17 @@ form
     :width 480px
     .timestamp
       :color #777
+    .story
+      :padding 10px 20px
+      :background #f6f6f6
+      :border 1px solid #EEE
+      +rounded(5px)
+      .avatar
+        img
+          :width 30px
+          :height 30px
+      h3
+        :margin-bottom 10px
   #story-info
     :float right
     :width 200px
@@ -209,6 +269,8 @@ form
   .inset
     :padding-top 10px
     :border-top 1px dotted #CCC
+    p
+      :float right
         
         
 .autocomplete-w1 

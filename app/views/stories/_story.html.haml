@@ -1,5 +1,8 @@
-%li
-  %h2= link_to story_title(story), story
+%li.story
+  %h3= link_to story_title(story), story
   %p
     =# image_tag story.photo.url(:thumb)
     = story.what
+  - story.users.each do |user|
+    = link_to image_tag(user.photo_url("square")), user, :class => "avatar", :title => "#{user.name}"
+

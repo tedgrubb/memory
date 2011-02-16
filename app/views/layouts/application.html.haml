@@ -23,11 +23,17 @@
         else{return false;}
       }
       var mobilesafari = ismobilesafari();
+      
+    - if flash.any?
+      :javascript
+        document.observe("dom:loaded", function() {
+        	$$(".flash").each(function(el) { 
+        	  new Effect.Fade(el, {duration: 0.6, delay: 4})
+        	});
+        });
+      
     
   %body
-    - flash.each do |key, value|
-      .flash{ :class => key } 
-        = value
     #container
       #header
         %h1
@@ -35,18 +41,24 @@
             memoirie
         .user_nav
           - if current_user
-            Welcome, 
-            = link_to current_user.name, current_user
-            = "|"
-            = link_to "Sign Out", signout_path
+            .logged-in
+              Welcome, 
+              = link_to current_user.name, current_user
+              = "|"
+              = link_to "Sign Out", signout_path
           - else 
-            = link_to "Sign in with Facebook", "/auth/facebook"
-
+            = link_to "Share your story", "/auth/facebook", :class => "share-button"
+      - flash.each do |key, value|
+        .flash{ :class => key } 
+          = value
       #content
         =yield
       #footer
         .inset
           %p
             &copy; 
-            = Time.now.year
             memoirie
+            = Time.now.year
+          .like
+            :erb
+              <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmemoirie.heroku.com%2F&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>
